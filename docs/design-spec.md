@@ -42,7 +42,7 @@ One accent colour, used sparingly. No sparkles, hearts or emoji.
 | 05 | Mindset | Data before models · Build tools people actually use · If it isn't tested, it isn't done |
 | 06 | Experience | AI & Data Science Engineer · B.Eng. · Intern · Erasmus+ 2025 · Game jam · Erasmus+ 2024 |
 | 07 | Highlights | 2 photos + 6 cards (Bonn agent workshop, game jam, Thessaloniki, live game, C++ certificates, C1 + Social Enterprise Manager) |
-| 08 | Skills | Interests, languages, AI & data, software, games & 3D, AI tooling, ways of working, spoken languages |
+| 08 | Skills | Interests, languages, AI & data, software, games & 3D, AI tooling, spoken languages |
 | 09 | Gallery | Dark, outline Build / Learn, 6 photo placeholders |
 | 10 | Say Hello | Photo fan + LinkedIn, GitHub, Roblox |
 | 11 | Contact | Avatar, LET'S CONNECT, email · LinkedIn · GitHub · Download CV |

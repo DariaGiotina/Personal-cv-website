@@ -127,7 +127,7 @@ export const work = {
   ],
 }
 
-export type Visual = 'phone' | 'rov' | 'browser' | 'parallel' | 'shops' | 'shot'
+export type Visual = 'phone' | 'rov' | 'browser' | 'parallel' | 'shops' | 'shot' | 'boss'
 export type Project = {
   title: string
   tags: string[]
@@ -231,8 +231,8 @@ export const tracks: Track[] = [
           { en: 'About 24,000 lines of strictly typed Luau and 170+ automated tests so far.', ro: 'Aproximativ 24.000 de linii de Luau strict tipizat și peste 170 de teste automate până acum.' },
         ],
         part: { en: 'Game design and all code', ro: 'Game design și tot codul' },
-        stack: 'Luau (strict) · Rojo · TestEZ · Blender Python', visual: 'shot', credit: true,
-        shot: { file: 'snack-heist.jpg', label: 'Concept art or work-in-progress shot', chip: { en: 'In development', ro: 'În dezvoltare' }, caption: { en: 'A first look, more soon', ro: 'O primă privire, urmează mai mult' } },
+        stack: 'Luau (strict) · Rojo · TestEZ · Blender Python', visual: 'boss', credit: true,
+        shot: { file: 'snack-heist-boss-still.webp', video: 'snack-heist-boss', label: 'Sir Flapjack, the first Giant', chip: { en: 'In development', ro: 'În dezvoltare' }, caption: { en: 'Sir Flapjack, the sleepy pancake knight guarding Breakfast Meadow', ro: 'Sir Flapjack, cavalerul-clătită somnoros care păzește Breakfast Meadow' } },
       },
       {
         title: 'Kintsugi', tags: ['Game jam', 'Unity', 'Team of 7'], status: { en: '2nd place · 72 h', ro: 'Locul 2 · 72 h' },

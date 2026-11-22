@@ -142,6 +142,49 @@ function Shot({ p }: { p: Project }) {
   )
 }
 
+const isSafari = typeof navigator !== 'undefined' && /^((?!chrome|chromium|android|edg).)*safari/i.test(navigator.userAgent)
+
+/** Character with a transparent background: WebM with alpha (Chrome/Edge/Firefox), animated WebP for Safari, a still for reduced motion. */
+function Boss({ p }: { p: Project }) {
+  const { t } = useLang()
+  const s = p.shot!
+  const base = `${import.meta.env.BASE_URL}images/`
+  const ref = useRef<HTMLVideoElement>(null)
+  const host = useRef<HTMLDivElement>(null)
+  const [near, setNear] = useState(false)
+  const still = reducedMotion()
+  useEffect(() => {
+    const el = host.current
+    if (!el || still) return
+    const io = new IntersectionObserver(([e]) => {
+      if (e.isIntersecting) setNear(true)
+      const v = ref.current
+      if (v) { if (e.isIntersecting) v.play().catch(() => {}); else v.pause() }
+    }, { rootMargin: '200px 0px', threshold: 0.2 })
+    io.observe(el)
+    return () => io.disconnect()
+  }, [still, near])
+  const label = `${p.title}: ${s.label}`
+  return (
+    <div className="v v-boss" ref={host}>
+      <span className="chip-live">{t(s.chip)}</span>
+      <div className="v-boss__stage">
+        <span className="v-boss__shadow" aria-hidden />
+        {still || (isSafari && !near) ? (
+          <img src={base + s.file} alt={label} />
+        ) : isSafari ? (
+          <img src={`${base}${s.video}.webp`} alt={label} />
+        ) : (
+          <video ref={ref} muted loop playsInline preload="none" poster={base + s.file} aria-label={label}>
+            <source src={`${base}${s.video}.webm`} type="video/webm" />
+          </video>
+        )}
+      </div>
+      <p className="v-cap">{t(s.caption)}</p>
+    </div>
+  )
+}
+
 export function Visual({ p }: { p: Project }) {
   switch (p.visual) {
     case 'phone': return <PhoneDemo />
@@ -150,5 +193,6 @@ export function Visual({ p }: { p: Project }) {
     case 'parallel': return <Parallel />
     case 'shops': return <Shops />
     case 'shot': return <Shot p={p} />
+    case 'boss': return <Boss p={p} />
   }
 }

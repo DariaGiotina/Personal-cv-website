@@ -481,7 +481,7 @@ button { font: inherit; color: inherit; cursor: pointer; }
 .credit img.av { object-fit: cover; }
 .hero__photo .photo img { object-position: 50% 35%; }
 .hl__photos .photo:last-child img { object-fit: contain; background: #e6d3d5; }
-.hl__photos .photo:first-child img { object-position: 50% 82%; }
+.hl__photos .photo:first-child img { object-position: 50% 35%; }
 @media (max-width: 720px) { .role__logo--wide { width: 150px; height: 70px; } }
 .role { grid-template-columns: 1fr 420px; }
 .role__note p.small { font-size: 15px; line-height: 1.6; color: var(--body); }

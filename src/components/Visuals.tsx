@@ -57,23 +57,6 @@ function Browser() {
   )
 }
 
-function Parallel() {
-  const rows: [string, number][] = [['Gaussian blur', 2.3], ['Grayscale', 1.4], ['Sobel edges', 2.5]]
-  return (
-    <div className="v v-card v-par">
-      <div className="flow"><b>INPUT</b><span /><b className="acc">FORK / JOIN · 20 THREADS</b><span /><b>OUTPUT</b></div>
-      <p className="v-cap">identical to the sequential output, pixel for pixel</p>
-      {rows.map(([l, v], i) => (
-        <div className="row" key={l}>
-          <span>{l}</span>
-          <div className="track"><i className={v < 2 ? 'soft' : ''} style={{ ['--d' as string]: `${i * 0.2}s` }} data-w={`${(v / 2.6) * 100}%`} /></div>
-          <em>{v}×</em>
-        </div>
-      ))}
-    </div>
-  )
-}
-
 function Shops() {
   const win = (title: string) => (
     <div className="win">
@@ -172,7 +155,6 @@ export function Visual({ p }: { p: Project }) {
     case 'phone': return <PhoneDemo />
     case 'rov': return <Rov />
     case 'browser': return <Browser />
-    case 'parallel': return <Parallel />
     case 'shops': return <Shops />
     case 'shot': return <Shot p={p} />
     case 'boss': return <Boss p={p} />

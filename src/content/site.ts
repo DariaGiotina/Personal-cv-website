@@ -127,7 +127,7 @@ export const work = {
   ],
 }
 
-export type Visual = 'phone' | 'rov' | 'browser' | 'parallel' | 'shops' | 'shot' | 'boss'
+export type Visual = 'phone' | 'rov' | 'browser' | 'shops' | 'shot' | 'boss'
 export type Project = {
   title: string
   tags: string[]
@@ -190,15 +190,6 @@ export const tracks: Track[] = [
         ],
         part: { en: '[Add what you built]', ro: '[Adaugă ce ai construit]' }, // TODO
         stack: 'React 19 · Node.js · Express · SQL Server · JWT · bcrypt', link: { label: { en: 'View on GitHub →', ro: 'Vezi pe GitHub →' }, href: gh('Application-for-venue-booking') }, visual: 'browser',
-      },
-      {
-        title: 'Parallel Image Processing', tags: ['Java', 'Concurrency', 'Performance'], status: { en: 'University · 2025', ro: 'Facultate · 2025' },
-        paras: [
-          { en: 'Gaussian blur, grayscale and Sobel edge detection, rewritten with Java’s Fork/Join framework. Every parallel output is checked pixel for pixel against the sequential version.', ro: 'Blur Gaussian, tonuri de gri și detecție de margini Sobel, rescrise cu framework-ul Fork/Join din Java. Fiecare rezultat paralel e verificat pixel cu pixel față de versiunea secvențială.' },
-          { en: 'Measured 2.3×, 1.4× and 2.5× speed-ups on 20 threads, with an honest write-up of why it stops scaling: the sequential share and memory contention.', ro: 'Accelerări măsurate de 2,3×, 1,4× și 2,5× pe 20 de fire de execuție, cu o analiză sinceră a motivelor pentru care nu mai scalează: partea secvențială și contenția de memorie.' },
-        ],
-        part: { en: 'Solo', ro: 'Individual' },
-        stack: 'Java · Fork/Join · benchmarking', link: { label: { en: 'View on GitHub →', ro: 'Vezi pe GitHub →' }, href: gh('Proiect_APD') }, visual: 'parallel',
       },
       {
         title: 'E-commerce Storefronts', tags: ['Backend', 'C#', 'Node.js'], status: { en: 'University · 2025', ro: 'Facultate · 2025' },

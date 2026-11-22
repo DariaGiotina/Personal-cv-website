@@ -18,19 +18,6 @@ export function Projects() {
     return () => io.disconnect()
   }, [])
 
-  // grow the speed-up bars once they are visible
-  useEffect(() => {
-    const io = new IntersectionObserver((entries) => entries.forEach((e) => {
-      if (e.isIntersecting) {
-        const i = e.target as HTMLElement
-        i.style.width = i.dataset.w || '0'
-        io.unobserve(i)
-      }
-    }), { threshold: 0.5 })
-    document.querySelectorAll<HTMLElement>('.v-par .track i').forEach((el) => io.observe(el))
-    return () => io.disconnect()
-  }, [])
-
   let n = 0
   return (
     <section className="section" id="projects" style={{ paddingTop: 60 }}>

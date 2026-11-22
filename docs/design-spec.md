@@ -37,7 +37,7 @@ One accent colour, used sparingly. No sparkles, hearts or emoji.
 | — | Marquee band | AI & Data Science · Software Engineering · Machine Learning · Game Development · Craiova ⇄ Bonn |
 | — | Statement | "I turn engineering data into tools people actually use. Software engineering student · AI & data science engineer at Kautex." |
 | 02 | **Work** | Role card (AI & Data Science Engineer, Kautex Textron, KDP, Dec 2025 – now; intern Sep – Nov 2025; three rotation team names). Confidentiality note. Generic pipeline: raw data → ETL → analysis → ML → dashboards. Six stack cards. **No project names, results, numbers, suppliers or parts.** |
-| 03 | **Projects** (personal) | Sticky switcher: **A · AI & Data** (AI Skincare Companion, Underwater Vision & ROV Sensors) · **B · Software** (Venue Booking System, Parallel Image Processing, E-commerce Storefronts) · **C · Games** (Push or Fall, Snack Heist, Kintsugi), then an "Also on GitHub" strip |
+| 03 | **Projects** (personal) | Sticky switcher: **A · AI & Data** (AI Skincare Companion, Underwater Vision & ROV Sensors) · **B · Software** (Venue Booking System, E-commerce Storefronts) · **C · Games** (Push or Fall, Snack Heist, Kintsugi), then an "Also on GitHub" strip |
 | 04 | Motivation | Quote + 4 paragraphs + wireframe car |
 | 05 | Mindset | Data before models · Build tools people actually use · If it isn't tested, it isn't done |
 | 06 | Experience | AI & Data Science Engineer · B.Eng. · Intern · Erasmus+ 2025 · Game jam · Erasmus+ 2024 |

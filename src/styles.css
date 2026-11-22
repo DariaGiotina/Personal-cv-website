@@ -515,3 +515,6 @@ button.btn { cursor: pointer; }
 .nav a { color: var(--ink); }
 .header:not(.scrolled) .nav a.active { background: rgba(251, 248, 246, 0.6); }
 .hero__scroll { color: var(--ink); }
+/* name rows run on their own (opposite directions); scroll still nudges them */
+.hero__track { display: inline-block; white-space: nowrap; animation: marquee 34s linear infinite; will-change: transform; }
+.hero__row--fill .hero__track { animation-duration: 42s; animation-direction: reverse; }

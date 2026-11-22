@@ -1,6 +1,7 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { contact, experience, gallery, highlights, links, mindset, motivation, skills, socials, ui } from '../content/site'
 import { useLang } from '../i18n'
+import { openCv } from './CvPicker'
 import { ScrollTrigger, gsap, reducedMotion } from '../hooks/motion'
 import { Car } from './Car'
 import { SectionHead } from './Intro'
@@ -132,67 +133,101 @@ export function Skills() {
   )
 }
 
+// cx = centre x (% of viewport), sp = horizontal speed while scrolling (negative = moves the other way)
 const GAL = [
-  { x: '14%', y: 140, w: 340, h: 255, r: -3, s: -80 },
-  { x: '44%', y: 260, w: 380, h: 286, r: 2, s: 60 },
-  { x: '68%', y: 110, w: 320, h: 180, r: -2, s: -140 },
-  { x: '66%', y: 560, w: 320, h: 240, r: 3, s: 100 },
-  { x: '20%', y: 620, w: 360, h: 203, r: 2, s: -60 },
+  { cx: 26, top: '10vh', h: 'min(34vh, 52vw)', ar: 4 / 3, r: -3, sp: 0.9, z: 3 },
+  { cx: 66, top: '24vh', h: 'min(40vh, 60vw)', ar: 4 / 3, r: 2, sp: -0.55, z: 2 },
+  { cx: 80, top: '62vh', h: 'min(26vh, 40vw)', ar: 16 / 9, r: -2, sp: 1.25, z: 4 },
+  { cx: 34, top: '78vh', h: 'min(32vh, 48vw)', ar: 4 / 3, r: 3, sp: -0.8, z: 3 },
+  { cx: 58, top: '112vh', h: 'min(28vh, 44vw)', ar: 16 / 9, r: -2, sp: 0.6, z: 2 },
 ]
 
 export function Gallery() {
   const { t } = useLang()
   const ref = useRef<HTMLElement>(null)
   useEffect(() => {
-    const el = ref.current
-    if (!el || reducedMotion()) return
-    const ctx = gsap.context(() => {
-      el.querySelectorAll<HTMLElement>('[data-speed]').forEach((n) => {
-        gsap.fromTo(n, { y: -Number(n.dataset.speed) }, { y: Number(n.dataset.speed), ease: 'none', scrollTrigger: { trigger: el, start: 'top bottom', end: 'bottom top', scrub: true } })
-      })
-    }, el)
-    return () => ctx.revert()
+    const sec = ref.current
+    if (!sec) return
+    const els = Array.from(sec.querySelectorAll<HTMLElement>('[data-gal]'))
+    let ticking = false
+    const update = () => {
+      ticking = false
+      const vw = window.innerWidth, vh = window.innerHeight
+      const r = sec.getBoundingClientRect()
+      if (r.bottom < -vh || r.top > vh * 2) return
+      for (const el of els) {
+        const cx = Number(el.dataset.cx), sp = reducedMotion() ? 0 : Number(el.dataset.sp)
+        const d = r.top + el.offsetTop + el.offsetHeight / 2 - vh / 2
+        const x = (cx / 100) * vw - el.offsetWidth / 2 + d * sp
+        el.style.transform = `translate3d(${x.toFixed(1)}px,0,0)`
+      }
+    }
+    const onScroll = () => { if (!ticking) { ticking = true; requestAnimationFrame(update) } }
+    window.addEventListener('scroll', onScroll, { passive: true })
+    window.addEventListener('resize', update)
+    update()
+    return () => { window.removeEventListener('scroll', onScroll); window.removeEventListener('resize', update) }
   }, [])
-  const mobile = typeof window !== 'undefined' && window.innerWidth < 720
   return (
     <section className="gallery" id="gallery" ref={ref}>
-      <div className="gallery__word" data-speed="60" style={{ left: '30%', top: 40 }}>{t(gallery.words[0])}</div>
-      <div className="gallery__word" data-speed="-60" style={{ left: '10%', top: mobile ? 700 : 560 }}>{t(gallery.words[1])}</div>
+      <div className="gallery__dots" aria-hidden />
+      <div className="gallery__word" data-gal data-cx="58" data-sp="0.3" style={{ top: '16vh' }} aria-hidden>{t(gallery.words[0])}</div>
+      <div className="gallery__word" data-gal data-cx="42" data-sp="-0.3" style={{ top: '92vh' }} aria-hidden>{t(gallery.words[1])}</div>
       {gallery.photos.map((p, i) => {
         const g = GAL[i]
-        const style = mobile
-          ? { left: i % 2 ? '40%' : '6%', top: 80 + i * 230, width: 210 }
-          : { left: g.x, top: g.y, width: g.w }
         return (
-          <div className="gallery__item" key={p.file} data-speed={g.s} style={style}>
-            <div style={{ rotate: `${g.r}deg` }}>
-              <Photo file={p.file} label="Photo" dark style={{ height: mobile ? 150 : g.h }} />
+          <figure className="gallery__item" key={p.file} data-gal data-cx={g.cx} data-sp={g.sp} style={{ top: g.top, zIndex: g.z }}>
+            <div className="gallery__frame" style={{ height: g.h, aspectRatio: g.ar, ['--r' as string]: `${g.r}deg` }}>
+              <Photo file={p.file} label={p.label} dark />
             </div>
-            <small>{p.label}</small>
-          </div>
+            <figcaption>{p.label}</figcaption>
+          </figure>
         )
       })}
     </section>
   )
 }
 
-const FAN = [[-16, -330, 40, 170], [-9, -220, 20, 190], [-3, -110, 6, 210], [0, 0, 0, 230], [4, 110, 6, 210], [10, 220, 20, 190], [16, 330, 40, 170]]
+// [rotation, x offset, y offset, card width, full-photo aspect ratio]
+const FAN: [number, number, number, number, number][] = [
+  [-16, -330, 40, 170, 0.6], [-9, -220, 20, 190, 0.75], [-3, -110, 6, 210, 0.75], [0, 0, 0, 230, 0.75],
+  [4, 110, 6, 210, 0.75], [10, 220, 20, 190, 0.75], [16, 330, 40, 170, 1.496],
+]
 
 export function Socials() {
   const { t } = useLang()
+  const [hover, setHover] = useState<number | null>(null)
+  const [shown, setShown] = useState(false)
+  const fanRef = useRef<HTMLDivElement>(null)
+  useEffect(() => {
+    const el = fanRef.current
+    if (!el) return
+    const io = new IntersectionObserver(([e]) => { if (e.isIntersecting) { setShown(true); io.disconnect() } }, { threshold: 0.25 })
+    io.observe(el)
+    return () => io.disconnect()
+  }, [])
+  const base = import.meta.env.BASE_URL + 'images/'
   return (
     <section className="section socials" id="socials">
       <h2 className="h2" data-reveal>{t(socials.title)}</h2>
       <div className="socials__sub">{t(socials.sub)}</div>
-      <div className="fan" data-reveal>
-        {FAN.map(([r, x, y, w], i) => (
-          <div key={i} className="photo" style={{
-            width: w, height: w * 1.3, marginLeft: -w / 2, zIndex: 10 - Math.abs(3 - i), ['--d' as string]: `${Math.abs(3 - i) * 0.06}s`,
-            ['--open' as string]: `translate(${x}px, ${y}px) rotate(${r}deg)`, background: `hsl(345 6% ${58 + Math.abs(3 - i) * 7}%)`,
-          }}>
-            <Photo file={`social-${i + 1}.jpg`} label="" />
-          </div>
-        ))}
+      <div ref={fanRef} className={`fan ${shown ? 'in' : ''} ${hover !== null ? 'has-hover' : ''}`} onMouseLeave={() => setHover(null)}>
+        {FAN.map(([r, x, y, w, ar], i) => {
+          const on = hover === i
+          const W = on ? Math.min(340 * ar, 440) : w
+          const H = on ? W / ar : w * 1.3
+          const ox = on ? Math.max(-500 + W / 2, Math.min(500 - W / 2, x)) : x
+          return (
+            <div key={i} className={`fan__card ${on ? 'on' : ''}`} onMouseEnter={() => setHover(i)} onFocus={() => setHover(i)} tabIndex={0}
+              style={{
+                width: W, height: H, marginLeft: -W / 2, zIndex: on ? 50 : 10 - Math.abs(3 - i), ['--d' as string]: `${Math.abs(3 - i) * 0.06}s`,
+                ['--open' as string]: on ? `translate(${ox}px, -24px) rotate(0deg)` : `translate(${x}px, ${y}px) rotate(${r}deg)`,
+              }}>
+              <img className="crop" src={`${base}social-${i + 1}.jpg`} alt="" loading="lazy" />
+              <img className="full" src={`${base}social-${i + 1}-full.jpg`} alt="" loading="lazy" />
+            </div>
+          )
+        })}
       </div>
       <div className="socials__links">
         {socials.items.map((s) => <div key={s.n}><span>{s.n}</span><a href={s.href} target="_blank" rel="noreferrer">{s.h}</a></div>)}
@@ -203,7 +238,6 @@ export function Socials() {
 
 export function Contact() {
   const { t } = useLang()
-  const cv = import.meta.env.BASE_URL + links.cv
   const title = t(contact.title)
   return (
     <section className="section contact" id="contact">
@@ -216,7 +250,7 @@ export function Contact() {
         <a href={`mailto:${links.email}`}>{links.email}</a>
         <a href={links.linkedin} target="_blank" rel="noreferrer">LinkedIn</a>
         <a href={links.github} target="_blank" rel="noreferrer">GitHub</a>
-        <a href={cv} download>{t(ui.downloadCv)}</a>
+        <a href="#cv" onClick={(e) => { e.preventDefault(); openCv() }}>{t(ui.downloadCv)}</a>
       </div>
     </section>
   )

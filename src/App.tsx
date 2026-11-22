@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useState } from 'react'
+import { CvPicker } from './components/CvPicker'
 import { Header } from './components/Header'
 import { Hero } from './components/Hero'
 import { Band, Statement, Work } from './components/Intro'
@@ -39,6 +40,7 @@ export default function App() {
         <Contact />
       </main>
       <Footer />
+      <CvPicker />
     </>
   )
 }

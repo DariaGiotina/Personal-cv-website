@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react'
 import { hero, links, ui } from '../content/site'
 import { useLang } from '../i18n'
+import { openCv } from './CvPicker'
 import { gsap, reducedMotion } from '../hooks/motion'
 import { Particles } from './Particles'
 import { Photo } from './Photo'
@@ -35,19 +36,17 @@ export function Hero({ onDock }: { onDock: (v: boolean) => void }) {
         width: () => (small() ? window.innerWidth * 0.72 : 480), height: () => (small() ? window.innerWidth * 0.92 : 560), borderRadius: 30,
         boxShadow: '0 30px 60px rgba(0,0,0,0.18)', ease: 'power2.inOut', duration: 1,
       }, 0)
-        .to('.hero__stickers', { opacity: 0, y: -40, duration: 0.35 }, 0)
-        .to('.hero__scroll', { opacity: 0, duration: 0.2 }, 0)
-        .to('.hero__status', { backgroundColor: 'rgba(251,248,246,0.75)', color: '#1b1719', borderColor: '#e4dad7', duration: 0.5 }, 0.2)
-        .to('.hero__names', { opacity: 1, duration: 0.5 }, 0.35)
+        .fromTo('.hero__stickers', { opacity: 1, y: 0 }, { opacity: 0, y: -40, duration: 0.35 }, 0)
+        .fromTo('.hero__scroll', { opacity: 0.8 }, { opacity: 0, duration: 0.2 }, 0)
+        .fromTo('.hero__status', { backgroundColor: 'rgba(20,18,20,0.28)', color: '#f8f3f1', borderColor: 'rgba(255,255,255,0.4)' }, { backgroundColor: 'rgba(251,248,246,0.75)', color: '#1b1719', borderColor: '#e4dad7', duration: 0.5 }, 0.2)
+        .fromTo('.hero__names', { opacity: 0 }, { opacity: 1, duration: 0.5 }, 0.35)
         .fromTo('.hero__row--outline', { xPercent: 8 }, { xPercent: -14, duration: 1.2, ease: 'none' }, 0.2)
         .fromTo('.hero__row--fill', { xPercent: -22 }, { xPercent: 0, duration: 1.2, ease: 'none' }, 0.2)
       if (sig) tl.fromTo(sig, { strokeDashoffset: 3200 }, { strokeDashoffset: 0, duration: 0.7, ease: 'none' }, 0.6)
-        .to(sig, { fill: '#7A3450', fillOpacity: 0.9, duration: 0.25 }, 1.15)
+        .fromTo(sig, { fill: '#7A3450', fillOpacity: 0 }, { fill: '#7A3450', fillOpacity: 0.9, duration: 0.25 }, 1.15)
     }, el)
     return () => ctx.revert()
   }, [onDock])
-
-  const cv = import.meta.env.BASE_URL + links.cv
   const row = `${hero.name} · ${hero.name} · ${hero.name} · `
 
   return (
@@ -77,7 +76,7 @@ export function Hero({ onDock }: { onDock: (v: boolean) => void }) {
       </div>
       <div className="hero__status"><span className="dot" /><span className="long">{t(ui.status)}</span><span className="short">{t(ui.statusShort)}</span></div>
       <div className="hero__ctas">
-        <a className="btn btn--primary" href={cv} download>{t(ui.downloadCv)}</a>
+        <button className="btn btn--primary" onClick={openCv}>{t(ui.downloadCv)}</button>
         <a className="btn btn--ghost" href={`mailto:${links.email}`}>{t(ui.emailMe)}</a>
       </div>
       <div className="hero__scroll">{t(ui.scroll)} ↓</div>

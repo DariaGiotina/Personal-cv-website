@@ -9,11 +9,14 @@ export const links = {
   linkedin: 'https://www.linkedin.com/in/dariamaria-giotina/',
   github: 'https://github.com/DariaGiotina',
   roblox: 'https://www.roblox.com/games/79222239890394',
-  cv: 'cv/Daria_Giotina_CV.pdf',
 }
 
 export const ui = {
   downloadCv: { en: 'Download CV', ro: 'Descarcă CV' },
+  cvTitle: { en: 'Which CV would you like?', ro: 'Ce CV te interesează?' },
+  cvSub: { en: 'Same person, three focuses. Pick the one closest to the role you are hiring for.', ro: 'Aceeași persoană, trei direcții. Alege-o pe cea mai apropiată de rolul pentru care angajezi.' },
+  download: { en: 'Download PDF', ro: 'Descarcă PDF' },
+  view: { en: 'View', ro: 'Vezi' },
   emailMe: { en: 'Email me', ro: 'Scrie-mi' },
   email: { en: 'Email', ro: 'Email' },
   menu: { en: 'Menu', ro: 'Meniu' },
@@ -31,6 +34,12 @@ export const ui = {
   artBy: { en: 'Art by', ro: 'Artă de' },
   footerRight: { en: 'Built with React, three.js and too much coffee', ro: 'Construit cu React, three.js și prea multă cafea' },
 }
+
+export const cvs = [
+  { file: 'Daria_Giotina_CV_AI_Data_Science.pdf', title: { en: 'AI & Data Science', ro: 'AI & Data Science' }, desc: { en: 'For data science, ML and automotive engineering roles. Python, machine learning, dashboards and the KDP rotations.', ro: 'Pentru roluri de data science, ML și inginerie auto. Python, machine learning, dashboard-uri și rotațiile KDP.' }, tags: ['Python', 'ML', 'Azure', 'Automotive'] },
+  { file: 'Daria_Giotina_CV_Software_Engineering.pdf', title: { en: 'Software Engineering', ro: 'Inginerie Software' }, desc: { en: 'For software and full-stack roles. Python, APIs, web apps, testing and production data tools.', ro: 'Pentru roluri de software și full-stack. Python, API-uri, aplicații web, testare și unelte de date în producție.' }, tags: ['Python', 'FastAPI', 'React', 'SQL'] },
+  { file: 'Daria_Giotina_CV_Game_Development.pdf', title: { en: 'Game Development', ro: 'Dezvoltare de jocuri' }, desc: { en: 'For gameplay and game dev roles. A live Roblox game, Unity, gameplay systems and live-ops.', ro: 'Pentru roluri de gameplay și game dev. Un joc Roblox live, Unity, sisteme de gameplay și live-ops.' }, tags: ['Luau', 'Roblox', 'Unity', 'C#'] },
+]
 
 export const nav: { id: string; label: L }[] = [
   { id: 'work', label: { en: 'Work', ro: 'Muncă' } },
@@ -81,10 +90,18 @@ export const work = {
   ],
   program: { en: '12-month rotational program · three engineering teams', ro: 'Program rotațional de 12 luni · trei echipe de inginerie' },
   note: {
-    en: 'The projects I work on are confidential, so instead of case studies, here is the stack I use every day.',
-    ro: 'Proiectele la care lucrez sunt confidențiale, așa că în loc de studii de caz, iată tehnologiile pe care le folosesc zilnic.',
+    en: 'The KDP is a 12-month program that rotated me through three departments: Data Science, Advanced Manufacturing and Design.',
+    ro: 'KDP este un program de 12 luni care m-a rotit prin trei departamente: Data Science, Advanced Manufacturing și Design.',
   },
-  noteSub: { en: 'Happy to talk about how I work in an interview.', ro: 'Îți povestesc cu drag cum lucrez, la un interviu.' },
+  noteSub: {
+    en: 'Each rotation meant a new team, new tools and a new side of the business. I now understand how a part is designed, made and validated, I bring skills from all three, and I get useful fast wherever I land.',
+    ro: 'Fiecare rotație a însemnat o echipă nouă, unelte noi și o altă parte a business-ului. Acum înțeleg cum e proiectată, produsă și validată o piesă, aduc competențe din toate trei și devin utilă repede oriunde ajung.',
+  },
+  depts: [
+    { en: 'Data Science: data, ML, dashboards', ro: 'Data Science: date, ML, dashboard-uri' },
+    { en: 'Advanced Manufacturing: processes, suppliers', ro: 'Advanced Manufacturing: procese, furnizori' },
+    { en: 'Design: CAD, engineering knowledge', ro: 'Design: CAD, cunoștințe de inginerie' },
+  ],
   pipeline: [
     { t: 'Raw data', s: 'sensors · logs · files' },
     { t: 'ETL', s: 'Azure · SQL' },

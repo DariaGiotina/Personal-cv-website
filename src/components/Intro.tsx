@@ -1,7 +1,5 @@
-import { useEffect, useRef } from 'react'
 import { band, statement, work } from '../content/site'
 import { useLang } from '../i18n'
-import { ScrollTrigger, reducedMotion } from '../hooks/motion'
 
 export function Band() {
   const { t } = useLang()
@@ -18,27 +16,10 @@ export function Band() {
 }
 
 export function Statement() {
-  const { t, lang } = useLang()
-  const ref = useRef<HTMLDivElement>(null)
-  useEffect(() => {
-    const el = ref.current
-    if (!el) return
-    const words = Array.from(el.querySelectorAll<HTMLElement>('.w'))
-    if (reducedMotion()) { words.forEach((w) => w.classList.add('on')); return }
-    const st = ScrollTrigger.create({
-      trigger: el, start: 'top 75%', end: 'bottom 55%', scrub: true,
-      onUpdate: (s) => {
-        const n = Math.round(s.progress * words.length)
-        words.forEach((w, i) => w.classList.toggle('on', i < n))
-      },
-    })
-    return () => st.kill()
-  }, [lang])
+  const { t } = useLang()
   return (
-    <div className="statement" ref={ref}>
-      {statement.map((line, li) => (
-        <p key={li}>{t(line).split(' ').map((w, i) => <span className="w" key={i}>{w}&nbsp;</span>)}</p>
-      ))}
+    <div className="statement">
+      {statement.map((line, li) => <p key={li} data-reveal style={{ ['--d' as string]: `${li * 0.15}s` }}>{t(line)}</p>)}
     </div>
   )
 }
@@ -73,6 +54,7 @@ export function Work() {
         <div className="role__note">
           <p>{t(work.note)}</p>
           <p className="small">{t(work.noteSub)}</p>
+          <div className="role__depts">{work.depts.map((d, i) => <span key={i}><b>{String(i + 1).padStart(2, '0')}</b>{t(d)}</span>)}</div>
         </div>
       </div>
       <div className="card pipeline" data-reveal>

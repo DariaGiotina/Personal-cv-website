@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { links, nav, ui } from '../content/site'
 import { useLang } from '../i18n'
+import { openCv } from './CvPicker'
 
 export function Header({ docked }: { docked: boolean }) {
   const { t, lang, setLang } = useLang()
@@ -32,8 +33,6 @@ export function Header({ docked }: { docked: boolean }) {
     return () => io.disconnect()
   }, [])
 
-  const cv = import.meta.env.BASE_URL + links.cv
-
   return (
     <>
       <header className={`header ${scrolled ? 'scrolled' : ''} ${docked ? 'docked' : ''}`}>
@@ -45,7 +44,7 @@ export function Header({ docked }: { docked: boolean }) {
         </nav>
         <div className="header__right">
           <div className="header__ctas">
-            <a className="btn btn--primary btn--sm" href={cv} download>{t(ui.downloadCv)}</a>
+            <button className="btn btn--primary btn--sm" onClick={openCv}>{t(ui.downloadCv)}</button>
             <a className="btn btn--ghost btn--sm" href={`mailto:${links.email}`}>{t(ui.email)}</a>
           </div>
           <div className="lang" role="group" aria-label="Language">

@@ -190,9 +190,29 @@ export function Gallery() {
 
 // [rotation, x offset, y offset, card width, full-photo aspect ratio]
 const FAN: [number, number, number, number, number][] = [
-  [-16, -330, 40, 170, 0.6], [-9, -220, 20, 190, 0.75], [-3, -110, 6, 210, 0.75], [0, 0, 0, 230, 0.75],
-  [4, 110, 6, 210, 0.75], [10, 220, 20, 190, 0.75], [16, 330, 40, 170, 1.496],
+  [-14, -400, 44, 170, 0.6], [-8, -268, 22, 190, 0.75], [-3, -134, 6, 210, 0.75], [0, 0, 0, 230, 0.75],
+  [3, 134, 6, 210, 0.75], [8, 268, 22, 190, 0.75], [14, 400, 44, 170, 1.496],
 ]
+const HALF = 550 // half the fan width
+
+/** Where every card sits. When one is hovered it grows and the others slide apart to make room. */
+function fanLayout(hover: number | null) {
+  return FAN.map(([r, x, y, w, ar], i) => {
+    if (hover === null) return { x, y, r, W: w, H: w * 1.3, s: 1 }
+    if (i === hover) {
+      const W = ar > 1 ? 400 : 290
+      const H = W / ar
+      return { x: Math.max(-HALF + W / 2, Math.min(HALF - W / 2, x)), y: -30, r: 0, W, H, s: 1 }
+    }
+    const hw = (ar: number) => (ar > 1 ? 400 : 290)
+    const room = hw(FAN[hover][4]) / 2 - FAN[hover][3] / 2 + 46
+    const dir = i < hover ? -1 : 1
+    const steps = Math.abs(i - hover)
+    const nx = x + dir * room * (1 - (steps - 1) * 0.18)
+    const lim = HALF - w * 0.35
+    return { x: Math.max(-lim, Math.min(lim, nx)), y: y + 14, r: r * 1.25, W: w, H: w * 1.3, s: 0.9 }
+  })
+}
 
 export function Socials() {
   const { t } = useLang()
@@ -206,22 +226,31 @@ export function Socials() {
     io.observe(el)
     return () => io.disconnect()
   }, [])
+  // pick the card whose resting position is nearest the cursor, so overlap never decides
+  const onMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const r = e.currentTarget.getBoundingClientRect()
+    const scale = r.width / (HALF * 2)
+    const mx = (e.clientX - r.left) / scale - HALF
+    let best = 0
+    FAN.forEach(([, x], i) => { if (Math.abs(x - mx) < Math.abs(FAN[best][1] - mx)) best = i })
+    if (best !== hover) setHover(best)
+  }
+  const pos = fanLayout(hover)
   const base = import.meta.env.BASE_URL + 'images/'
   return (
     <section className="section socials" id="socials">
       <h2 className="h2" data-reveal>{t(socials.title)}</h2>
       <div className="socials__sub">{t(socials.sub)}</div>
-      <div ref={fanRef} className={`fan ${shown ? 'in' : ''} ${hover !== null ? 'has-hover' : ''}`} onMouseLeave={() => setHover(null)}>
-        {FAN.map(([r, x, y, w, ar], i) => {
+      <div ref={fanRef} className={`fan ${shown ? 'in' : ''} ${hover !== null ? 'has-hover' : ''}`} onMouseMove={onMove} onMouseLeave={() => setHover(null)}>
+        {FAN.map((_, i) => {
           const on = hover === i
-          const W = on ? Math.min(340 * ar, 440) : w
-          const H = on ? W / ar : w * 1.3
-          const ox = on ? Math.max(-500 + W / 2, Math.min(500 - W / 2, x)) : x
+          const p = pos[i]
           return (
-            <div key={i} className={`fan__card ${on ? 'on' : ''}`} onMouseEnter={() => setHover(i)} onFocus={() => setHover(i)} tabIndex={0}
+            <div key={i} className={`fan__card ${on ? 'on' : ''}`} tabIndex={0} onFocus={() => setHover(i)} onBlur={() => setHover(null)}
               style={{
-                width: W, height: H, marginLeft: -W / 2, zIndex: on ? 50 : 10 - Math.abs(3 - i), ['--d' as string]: `${Math.abs(3 - i) * 0.06}s`,
-                ['--open' as string]: on ? `translate(${ox}px, -24px) rotate(0deg)` : `translate(${x}px, ${y}px) rotate(${r}deg)`,
+                width: p.W, height: p.H, marginLeft: -p.W / 2, zIndex: on ? 50 : 10 - Math.abs((hover ?? 3) - i),
+                ['--d' as string]: `${Math.abs(3 - i) * 0.06}s`,
+                ['--open' as string]: `translate(${p.x}px, ${p.y}px) rotate(${p.r}deg) scale(${p.s})`,
               }}>
               <img className="crop" src={`${base}social-${i + 1}.jpg`} alt="" loading="lazy" />
               <img className="full" src={`${base}social-${i + 1}-full.jpg`} alt="" loading="lazy" />

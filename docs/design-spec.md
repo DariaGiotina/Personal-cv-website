@@ -7,22 +7,22 @@ The layout, section rhythm and motion follow an editorial portfolio the owner ad
 
 **Own twist:** an automotive + data identity. A wireframe car replaces the globe in Motivation, a generic data-pipeline diagram anchors the Work section, and projects are split into hiring tracks.
 
-## Brand (v2: champagne, professional)
+## Brand (v2: rosy linen + mauve, professional)
 
 | Token | Hex | Use |
 |---|---|---|
-| bg/canvas | `#F5EEDF` | Champagne page background |
-| bg/card | `#FFFCF6` | Cards |
-| accent/tint | `#EFE3CB` | Soft panels, status tags, credit pill |
-| bg/dark | `#1F1B17` | Mindset + Gallery |
-| ink/primary | `#1A1714` | Headings |
-| ink/body | `#423C35` | Body text |
-| ink/muted | `#8C8376` | Labels, captions |
-| ink/inverse | `#FAF5EA` | Text on dark / accent |
+| bg/canvas | `#F3EDEA` | Linen page background (warm, slight rose undertone) |
+| bg/card | `#FBF8F6` | Cards |
+| accent/tint | `#EBE0DE` | Soft panels, status tags, credit pill |
+| bg/dark | `#1E1A1C` | Mindset + Gallery |
+| ink/primary | `#1B1719` | Headings |
+| ink/body | `#433B3E` | Body text |
+| ink/muted | `#8A7F82` | Labels, captions |
+| ink/inverse | `#F8F3F1` | Text on dark / accent |
 | accent/primary | `#7A3450` | The only accent: buttons, numbers, signature, band |
 | accent/deep | `#5E2740` | Small accent text (AA contrast) |
-| accent/soft | `#D9C7A3` | Highlights on dark |
-| line/soft | `#E6DCC8` | Dividers, borders |
+| accent/soft | `#D4BFC3` | Highlights on dark |
+| line/soft | `#E4DAD7` | Dividers, borders |
 
 One accent colour, used sparingly. No sparkles, hearts or emoji.
 

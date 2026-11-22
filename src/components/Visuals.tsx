@@ -1,4 +1,5 @@
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
+import { reducedMotion } from '../hooks/motion'
 import type { Project } from '../content/site'
 import { ui } from '../content/site'
 import { useLang } from '../i18n'
@@ -102,6 +103,29 @@ function Shops() {
   return <div className="v v-shops">{win('ASP.NET Core storefront')}{win('Express + EJS shop')}</div>
 }
 
+/** Silent looping clip: loads only when near the screen, pauses when off-screen, poster only for reduced motion. */
+function LoopVideo({ name, poster, label }: { name: string; poster: string; label: string }) {
+  const ref = useRef<HTMLVideoElement>(null)
+  useEffect(() => {
+    const v = ref.current
+    if (!v || reducedMotion()) return
+    const io = new IntersectionObserver(([e]) => {
+      if (e.isIntersecting) { v.preload = 'auto'; v.play().catch(() => {}) } else v.pause()
+    }, { rootMargin: '200px 0px', threshold: 0.2 })
+    io.observe(v)
+    return () => io.disconnect()
+  }, [])
+  const base = `${import.meta.env.BASE_URL}images/`
+  return (
+    <div className="photo">
+      <video ref={ref} muted loop playsInline preload="none" poster={base + poster} aria-label={label}>
+        <source src={`${base}${name}.webm`} type="video/webm" />
+        <source src={`${base}${name}.mp4`} type="video/mp4" />
+      </video>
+    </div>
+  )
+}
+
 function Shot({ p }: { p: Project }) {
   const { t } = useLang()
   const s = p.shot!
@@ -110,7 +134,7 @@ function Shot({ p }: { p: Project }) {
       <div className="print">
         <div style={{ position: 'relative' }}>
           <span className={`chip-live ${s.live ? 'live' : ''}`}>{s.live && <span className="dot" />}{t(s.chip)}</span>
-          <Photo file={s.file} label={s.label} />
+          {s.video ? <LoopVideo name={s.video} poster={s.file} label={`${p.title}: ${s.label}`} /> : <Photo file={s.file} label={s.label} />}
         </div>
         <p className="v-cap">{t(s.caption)}</p>
       </div>

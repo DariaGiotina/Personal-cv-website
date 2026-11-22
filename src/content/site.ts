@@ -137,7 +137,7 @@ export type Project = {
   stack: string
   link?: { label: L; href: string }
   visual: Visual
-  shot?: { file: string; label: string; chip: L; live?: boolean; caption: L }
+  shot?: { file: string; label: string; chip: L; live?: boolean; caption: L; video?: string }
   credit?: boolean
 }
 export type Track = { key: string; letter: string; name: L; sub: L; projects: Project[] }
@@ -222,7 +222,7 @@ export const tracks: Track[] = [
         ],
         part: { en: 'Game design, all code, Blender pipeline, live-ops', ro: 'Game design, tot codul, pipeline Blender, live-ops' },
         stack: 'Luau (strict) · Rojo · TestEZ · Blender Python · StyLua / Selene', link: { label: { en: 'Play on Roblox →', ro: 'Joacă pe Roblox →' }, href: links.roblox }, visual: 'shot', credit: true,
-        shot: { file: 'push-or-fall.jpg', label: 'Gameplay screenshot', chip: { en: 'Live on Roblox', ro: 'Live pe Roblox' }, live: true, caption: { en: 'Round 3, seven players left', ro: 'Runda 3, au mai rămas șapte jucători' } },
+        shot: { file: 'push-or-fall.jpg', video: 'push-or-fall', label: 'Gameplay loop', chip: { en: 'Live on Roblox', ro: 'Live pe Roblox' }, live: true, caption: { en: 'Recorded in the live game', ro: 'Înregistrat în jocul live' } },
       },
       {
         title: 'Snack Heist', tags: ['Stealth', 'Luau', 'AI'], status: { en: 'In development', ro: 'În dezvoltare' },

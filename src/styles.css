@@ -518,3 +518,4 @@ button.btn { cursor: pointer; }
 /* name rows run on their own (opposite directions); scroll still nudges them */
 .hero__track { display: inline-block; white-space: nowrap; animation: marquee 34s linear infinite; will-change: transform; }
 .hero__row--fill .hero__track { animation-duration: 42s; animation-direction: reverse; }
+.v-shot .photo video { width: 100%; height: 100%; object-fit: cover; display: block; }

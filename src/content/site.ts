@@ -348,6 +348,6 @@ export const socials = {
 }
 
 export const contact = {
-  label: { en: '11 · Contact', ro: '11 · Contact' },
+  label: { en: '10 · Contact', ro: '10 · Contact' },
   title: { en: 'LET’S CONNECT', ro: 'HAI SĂ VORBIM' },
 }

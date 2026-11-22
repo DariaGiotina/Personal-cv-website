@@ -4,7 +4,7 @@ import { Header } from './components/Header'
 import { Hero } from './components/Hero'
 import { Statement, Work } from './components/Intro'
 import { Projects } from './components/Projects'
-import { Contact, Experience, Footer, Gallery, Highlights, Mindset, Motivation, Skills, Socials } from './components/Rest'
+import { Contact, Experience, Footer, Gallery, Highlights, Mindset, Motivation, Skills } from './components/Rest'
 import { ScrollTrigger, initReveals } from './hooks/motion'
 import { useLang } from './i18n'
 
@@ -35,7 +35,6 @@ export default function App() {
         <Highlights />
         <Skills />
         <Gallery />
-        <Socials />
         <Contact />
       </main>
       <Footer />

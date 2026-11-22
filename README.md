@@ -2,6 +2,8 @@
 
 Personal portfolio website for Daria Giotina, AI & Data Science Engineer (Kautex Development Program) and Software Engineering student at the University of Craiova.
 
+Projects are organised by hiring track: **AI & Data**, **Software** and **Games**. Work at Kautex is shown as role and tech stack only (projects are confidential).
+
 ## Status
 
 **Phase 1: design** (done) · Phase 2: build · Phase 3: deploy

@@ -1,64 +1,65 @@
-# Design spec · Daria Giotina portfolio
+# Design spec · Daria Giotina portfolio (v2)
 
-**Figma:** https://www.figma.com/design/ZswGUJyNdV14Up7HHJtCAE (page "Website": Desktop · 1440, Mobile · 390, Motion & build notes, Components)
+**Figma:** https://www.figma.com/design/ZswGUJyNdV14Up7HHJtCAE
+Page "Website" holds: `Hero · load state` (above), `Desktop · 1440 (v2)`, `Mobile · 390 (v2)`, `Motion & build notes (v2)`, and `Components` (left).
 
-Layout, section order and motion are modelled on an editorial portfolio the owner admires (Instrument Serif / Sans, scroll-driven hero, marquee, project rows, dark mindset band, horizontal experience track, dark gallery, photo fan, big contact headline). All copy, content and visuals are Daria's own; nothing is copied from that site.
+The layout, section rhythm and motion follow an editorial portfolio the owner admires: Instrument Serif / Sans, a scroll-driven photo hero with floating stickers, a tilted marquee, numbered project rows, a dark mindset band, a pinned horizontal experience track, a dark gallery, a photo fan and a big contact headline. All copy, content and visuals are Daria's own; no text, images or code are copied.
 
-## Brand
+**Own twist:** an automotive + data identity. A wireframe car replaces the globe in Motivation, a generic data-pipeline diagram anchors the Work section, and projects are split into hiring tracks.
+
+## Brand (v2: champagne, professional)
 
 | Token | Hex | Use |
 |---|---|---|
-| bg/blush | `#F8F1F2` | Page background |
-| bg/card | `#FFFFFF` | Cards |
-| bg/petal | `#FBE3EA` | Soft panels, status tags |
-| bg/plum | `#2B1A22` | Mindset + Gallery (dark sections) |
-| ink/primary | `#1E1619` | Headings |
-| ink/body | `#4A3D42` | Body text |
-| ink/muted | `#8A7A80` | Labels, meta |
-| ink/inverse | `#FBF4F6` | Text on dark / rose |
-| accent/rose | `#B4466D` | Primary accent, buttons, numbers |
-| accent/rose-deep | `#8E2F52` | Small accent text (AA contrast) |
-| accent/petal | `#F3C9D6` | Highlights, nav active state |
-| line/soft | `#E9DADF` | Dividers, borders |
+| bg/canvas | `#F5EEDF` | Champagne page background |
+| bg/card | `#FFFCF6` | Cards |
+| accent/tint | `#EFE3CB` | Soft panels, status tags, credit pill |
+| bg/dark | `#1F1B17` | Mindset + Gallery |
+| ink/primary | `#1A1714` | Headings |
+| ink/body | `#423C35` | Body text |
+| ink/muted | `#8C8376` | Labels, captions |
+| ink/inverse | `#FAF5EA` | Text on dark / accent |
+| accent/primary | `#7A3450` | The only accent: buttons, numbers, signature, band |
+| accent/deep | `#5E2740` | Small accent text (AA contrast) |
+| accent/soft | `#D9C7A3` | Highlights on dark |
+| line/soft | `#E6DCC8` | Dividers, borders |
 
-**Type:** Instrument Serif (headings, 96 px H2, italic for accents), Instrument Sans (body 18/1.6, labels 11–12 uppercase +8–12% tracking), Mrs Saint Delafield (signature only).
+One accent colour, used sparingly. No sparkles, hearts or emoji.
 
-**The "5% cute":** rose instead of green, script signature, tiny ✦ sparkles in the hero and band, a ♡ in the footer, slightly softer radii. Nothing else.
+**Type:** Instrument Serif (H2 96 px, italic for section labels and captions), Instrument Sans (body 18 / 1.6, uppercase labels with 8–12% tracking), Mrs Saint Delafield (signature only).
 
-## Sections and copy
+## Sections
 
-1. **Header**: DG monogram · nav pill (Projects, Motivation, Experience, Highlights, Skills, Gallery, Socials, Contact) · EN / RO toggle. CTAs dock here after the hero.
-2. **Hero**: status pill "Graduating June 2027 · Open to junior SWE / ML roles". B/W portrait (placeholder), outline name marquee "Daria Giotina ·", script signature, floating chips: *AI & Data Science / Software Engineering × ML*, *Kautex Textron / KDP Engineer · since 2025*, *University of Craiova / B.Eng. Software Engineering '27*, *Craiova ⇄ Bonn / Automotive engineering*, *RO · EN / Native · C1 Cambridge*. Buttons: Download CV, Email me.
-3. **Marquee band**: AI & Data Science ✦ Software Engineering ✦ Machine Learning ✦ Craiova ⇄ Bonn ✦
-4. **Statement**: "I turn messy engineering data into tools engineers actually use. / *Software engineering student and AI & data science engineer at Kautex.*"
-5. **Projects** (number, title, tags, status, 2 paragraphs, MY PART, STACK, link, visual):
-   1. Production Analytics Dashboard · IN DAILY USE · 2026
-   2. AI Skincare Companion · BACHELOR THESIS · 2027 · GitHub
-   3. Push or Fall · LIVE ON ROBLOX · Play link
-   4. Battery Durability Analytics · 2025 – 2026
-   5. Business Case Agent & AI Workshops · OCT – NOV 2026
-   6. Kintsugi · 2ND PLACE · code link
-6. **Motivation**: quote "Data is only useful once someone can make a decision with it." + four short paragraphs (data to decision; software into automotive; games teach shipping; senior data scientist goal) + wireframe ML orb.
-7. **Mindset** (dark): Data before models. · Build tools people actually use. · If it isn't tested, it isn't done.
-8. **Experience** (horizontal track): KDP Engineer · B.Eng. Software Engineering · 3D Printing Feasibility Lead · AI & Data Science Intern · Erasmus+ programmes.
-9. **Highlights**: 2 photos + 6 cards (Bonn agent workshop, global AI/ML workshop talk, game-jam 2nd place, report-out, Thessaloniki, shipping a live game).
-10. **Skills and Interests**: interests (serif chips), then languages and core, ML and data, software engineering, cloud and AI tooling, soft skills, spoken languages (Română native, English C1).
-11. **Gallery** (dark): outline words Build / Learn, 6 photo placeholders.
-12. **Find Me Online**: photo fan + LinkedIn, GitHub, Roblox.
-13. **Contact**: avatar, "08 · Contact", LET'S CONNECT, email · LinkedIn · GitHub · Download CV, script "Daria".
-14. **Footer**: © 2026 Daria Giotina · Craiova — Designed & built with care ♡
+| # | Section | Notes |
+|---|---|---|
+| — | Header | DG monogram, nav (Work, Projects, Motivation, Experience, Highlights, Skills, Gallery, Contact), docked CTAs, EN / RO, scroll-progress line |
+| 01 | Hero | **State A:** full-bleed B/W portrait, particle field, stickers (*AI & Data Science × Software*, *Kautex Textron / AI & Data Science Engineer*, *University of Craiova / B.Eng. Software Engineering '27*, *CRA ⇄ BONN*, *RO · EN · C1*, line-art car icon), status pill "Graduating June 2027 · Open to junior software, ML & game dev roles". **State B:** card portrait, name marquee (outline + filled rows), drawn signature |
+| — | Marquee band | AI & Data Science · Software Engineering · Machine Learning · Game Development · Craiova ⇄ Bonn |
+| — | Statement | "I turn engineering data into tools people actually use. Software engineering student · AI & data science engineer at Kautex." |
+| 02 | **Work** | Role card (AI & Data Science Engineer, Kautex Textron, KDP, Dec 2025 – now; intern Sep – Nov 2025; three rotation team names). Confidentiality note. Generic pipeline: raw data → ETL → analysis → ML → dashboards. Six stack cards. **No project names, results, numbers, suppliers or parts.** |
+| 03 | **Projects** (personal) | Sticky switcher: **A · AI & Data** (AI Skincare Companion, Underwater Vision & ROV Sensors) · **B · Software** (Venue Booking System, Parallel Image Processing, E-commerce Storefronts) · **C · Games** (Push or Fall, Snack Heist, Kintsugi), then an "Also on GitHub" strip |
+| 04 | Motivation | Quote + 4 paragraphs + wireframe car |
+| 05 | Mindset | Data before models · Build tools people actually use · If it isn't tested, it isn't done |
+| 06 | Experience | AI & Data Science Engineer · B.Eng. · Intern · Erasmus+ 2025 · Game jam · Erasmus+ 2024 |
+| 07 | Highlights | 2 photos + 6 cards (Bonn agent workshop, game jam, Thessaloniki, live game, C++ certificates, C1 + Social Enterprise Manager) |
+| 08 | Skills | Interests, languages, AI & data, software, games & 3D, AI tooling, ways of working, spoken languages |
+| 09 | Gallery | Dark, outline Build / Learn, 6 photo placeholders |
+| 10 | Say Hello | Photo fan + LinkedIn, GitHub, Roblox |
+| 11 | Contact | Avatar, LET'S CONNECT, email · LinkedIn · GitHub · Download CV |
 
-Full motion notes are on the "Motion & build notes" board in Figma.
+Both Roblox games (Push or Fall, Snack Heist) carry the credit **"Art by [Artist name] · National University of Arts Bucharest"**. Daria's part: game design, all code, Blender pipeline (and live-ops for Push or Fall).
 
-## Confidentiality rules (from the career vault)
+Full motion notes are on the "Motion & build notes (v2)" board in Figma.
 
-- No supplier names, partner names, part numbers or internal metrics. Project texts use the vault's `generic-only` wording.
-- The Kautex report-out deck is company confidential; nothing from it goes into this repo.
-- The agent mock in Project 5 is labelled as an illustrative example.
+## Confidentiality
 
-## To confirm before going live
+- Work at Kautex is shown only as role, dates, team names and tech stack. No project descriptions.
+- The career vault and company documents never go into this repo (see `.gitignore`).
 
-- "Solo project" on Push or Fall and the thesis.
-- The email address to show (placeholder `your.email@example.com`).
-- Roblox and GitHub links, CV PDF to ship.
-- That your manager is fine with the generic Kautex project descriptions.
+## To fill in before launch
+
+- [ ] Artist's name (and link, if they want one)
+- [ ] Your part in the Venue Booking System (team of 3)
+- [ ] Email to show (currently `your.email@example.com`)
+- [ ] OK to mention the Bonn agent workshop? (public LinkedIn post, but it's a work event)
+- [ ] Photos (see `public/images/README.md`), Roblox link, CV PDF

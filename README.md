@@ -15,4 +15,4 @@ Projects are organised by hiring track: **AI & Data**, **Software** and **Games*
 
 ## Planned stack
 
-Vite + React + TypeScript, Framer Motion / GSAP ScrollTrigger for scroll animation, three.js for the hero particles and the wireframe orb, EN / RO translations, deployed on GitHub Pages or Vercel.
+Vite + React + TypeScript, Framer Motion / GSAP ScrollTrigger for scroll animation, three.js for the hero particles and the wireframe car, EN / RO translations, deployed on GitHub Pages.

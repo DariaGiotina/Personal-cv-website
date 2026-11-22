@@ -47,13 +47,13 @@ export function Hero({ onDock }: { onDock: (v: boolean) => void }) {
     }, el)
     return () => ctx.revert()
   }, [onDock])
-  const row = `${hero.name} · ${hero.name} · ${hero.name} · `
+  const rows = hero.skillRows.map((r) => r.join(' · ') + ' · ')
 
   return (
     <section className="hero" id="top" ref={root}>
       <div className="hero__names" aria-hidden>
-        <div className="hero__row hero__row--outline"><div className="hero__track">{row}{row}</div></div>
-        <div className="hero__row hero__row--fill"><div className="hero__track">{row}{row}</div></div>
+        <div className="hero__row hero__row--outline"><div className="hero__track">{rows[0]}{rows[0]}</div></div>
+        <div className="hero__row hero__row--fill"><div className="hero__track">{rows[1]}{rows[1]}</div></div>
       </div>
       <div className="hero__photo">
         <Photo file="portrait.jpg" label="Full-bleed B/W portrait · placeholder" />

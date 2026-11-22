@@ -54,6 +54,10 @@ export const nav: { id: string; label: L }[] = [
 
 export const hero = {
   name: 'Daria Giotina',
+  skillRows: [
+    ['Python', 'React', 'AI', 'Machine Learning', 'PyTorch', 'FastAPI'],
+    ['SQL', 'TypeScript', 'Azure', 'Computer Vision', 'Unity', 'Luau'],
+  ],
   stickers: [
     { kind: 'accent', title: { en: 'AI & Data Science × Software', ro: 'AI & Data Science × Software' } },
     { kind: 'card', title: { en: 'Kautex Textron', ro: 'Kautex Textron' }, sub: { en: 'AI & Data Science Engineer', ro: 'Inginer AI & Data Science' } },

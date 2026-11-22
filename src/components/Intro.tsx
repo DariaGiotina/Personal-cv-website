@@ -1,19 +1,5 @@
-import { band, statement, work } from '../content/site'
+import { statement, work } from '../content/site'
 import { useLang } from '../i18n'
-
-export function Band() {
-  const { t } = useLang()
-  const items = [...band, ...band, ...band, ...band]
-  return (
-    <div className="band" aria-hidden>
-      <div className="band__inner">
-        <div className="band__track">
-          {[0, 1].map((k) => items.map((b, i) => <span key={`${k}-${i}`}>{t(b)} &nbsp;·</span>))}
-        </div>
-      </div>
-    </div>
-  )
-}
 
 export function Statement() {
   const { t } = useLang()

@@ -172,7 +172,7 @@ button { font: inherit; color: inherit; cursor: pointer; }
 .band__track span { font-family: var(--serif); font-size: 28px; color: var(--inverse); padding: 0 11px; white-space: nowrap; }
 .statement {
   padding: clamp(100px, 10vw, 140px) var(--pad) clamp(110px, 11vw, 160px); text-align: center;
-  background: linear-gradient(180deg, #dccdcb 0%, var(--canvas) 80%);
+  background: linear-gradient(180deg, var(--canvas) 0%, #e6dbd9 40%, var(--canvas) 100%);
 }
 .statement p { font-family: var(--serif); font-size: clamp(32px, 4vw, 58px); line-height: 1.15; margin: 0; }
 

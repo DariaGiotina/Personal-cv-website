@@ -2,7 +2,7 @@ import { useCallback, useEffect, useState } from 'react'
 import { CvPicker } from './components/CvPicker'
 import { Header } from './components/Header'
 import { Hero } from './components/Hero'
-import { Band, Statement, Work } from './components/Intro'
+import { Statement, Work } from './components/Intro'
 import { Projects } from './components/Projects'
 import { Contact, Experience, Footer, Gallery, Highlights, Mindset, Motivation, Skills, Socials } from './components/Rest'
 import { ScrollTrigger, initReveals } from './hooks/motion'
@@ -26,7 +26,6 @@ export default function App() {
       <Header docked={docked} />
       <main>
         <Hero onDock={onDock} />
-        <Band />
         <Statement />
         <Work />
         <Projects />

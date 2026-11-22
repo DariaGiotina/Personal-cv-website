@@ -1,19 +1,15 @@
-# Images to add
+# Images
 
-Drop real photos here with these names (any of .jpg / .webp works) and they will replace the placeholders.
+All photos are in place. To swap one, replace the file with the same name (jpg).
 
-| File | Where it shows | Notes |
-|---|---|---|
-| `portrait.jpg` | Hero (full-bleed, then card) | Black-and-white, face centred, at least 1600 px tall |
-| `avatar.jpg` | Contact section | Square crop of a friendly portrait |
-| `push-or-fall.jpg` (or `.mp4`) | Games · Push or Fall | Gameplay screenshot or a 5–10 s loop |
-| `kintsugi.jpg` | Games · Kintsugi | Screenshot from the pitch deck |
-| `snack-heist.jpg` | Games · Snack Heist | Concept art or WIP shot, only once you and your artist are happy to show it |
-| `kautex-logo.svg` | Work role card | Only if allowed by company brand rules, otherwise leave the monogram |
-| `artist-avatar.jpg` | Games credit pill | Ask your artist first |
-| `thesis-app.png` | AI & Data · thesis phone | App screenshot (no real patient photos) |
-| `highlight-bonn.jpg`, `highlight-team.jpg` | Highlights | Bonn workshop, report-out / team |
-| `gallery-1.jpg` … `gallery-6.jpg` | Gallery (Build / Learn) | Desk, ROV lab, game jam team, Bonn, Craiova, something cute |
-| `social-1.jpg` … `social-7.jpg` | Socials photo fan | Centre one (`social-4`) is the hero shot |
-
-Do not use photos of company prototypes, internal dashboards or slides unless your manager has cleared them.
+| File | Where it shows |
+|---|---|
+| `portrait.jpg` | Hero (full-bleed, then card) |
+| `avatar.jpg` | Contact section |
+| `kautex-logo.png` | Work role card |
+| `kintsugi.jpg` | Games · Kintsugi |
+| `artist-avatar.jpg` | Artist credit (Delia Pana) on the Roblox games |
+| `highlight-bonn.jpg`, `highlight-team.jpg` | Highlights |
+| `gallery-1.jpg` … `gallery-5.jpg` | Gallery (Build / Learn) |
+| `social-1.jpg` … `social-7.jpg` | Photo fan, left to right (`social-4` is the centre) |
+| `push-or-fall.jpg`, `snack-heist.jpg`, `thesis-app.png` | Still missing: add them to replace the placeholders |

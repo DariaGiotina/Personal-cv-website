@@ -5,7 +5,7 @@ export type Lang = 'en' | 'ro'
 export type L = { en: string; ro: string }
 
 export const links = {
-  email: 'your.email@example.com', // TODO: replace with the address you want public
+  email: 'dariamaria61@yahoo.com',
   linkedin: 'https://www.linkedin.com/in/dariamaria-giotina/',
   github: 'https://github.com/DariaGiotina',
   roblox: 'https://www.roblox.com/games/79222239890394',
@@ -129,7 +129,8 @@ export const projectsIntro = {
 }
 
 export const artist = {
-  name: '[Artist name]', // TODO: your artist friend's name
+  name: 'Delia Pana',
+  photo: 'artist-avatar.jpg',
   school: { en: 'National University of Arts Bucharest', ro: 'Universitatea Națională de Arte București' },
 }
 
@@ -278,7 +279,7 @@ export const highlights = {
   title: { en: 'Highlights', ro: 'Repere' },
   photos: [
     { file: 'highlight-bonn.jpg', label: 'AI agent workshop, Bonn' },
-    { file: 'highlight-team.jpg', label: 'Game jam team' },
+    { file: 'highlight-team.jpg', label: 'The Kintsugi team, drawn by one of our artists' },
   ],
   items: [
     { t: { en: 'Teaching AI agents in Bonn', ro: 'Agenți AI predați la Bonn' }, s: { en: 'Co-hosted an agent-building workshop at a European graduate-program gathering. About 8 colleagues each built their own AI agent.', ro: 'Am co-organizat un workshop de construit agenți la o întâlnire europeană a programului pentru absolvenți. Aproximativ 8 colegi și-au construit fiecare propriul agent AI.' } },
@@ -307,12 +308,11 @@ export const skills = {
 export const gallery = {
   words: [{ en: 'Build', ro: 'Construiesc' }, { en: 'Learn', ro: 'Învăț' }],
   photos: [
-    { file: 'gallery-1.jpg', label: 'At my desk' },
+    { file: 'gallery-1.jpg', label: 'At the office' },
     { file: 'gallery-2.jpg', label: 'ROV lab · Thessaloniki' },
-    { file: 'gallery-3.jpg', label: 'Game jam team' },
-    { file: 'gallery-4.jpg', label: 'Bonn' },
-    { file: 'gallery-5.jpg', label: 'Craiova' },
-    { file: 'gallery-6.jpg', label: 'Blender WIP' },
+    { file: 'gallery-3.jpg', label: 'Game jam team, drawn by our artist' },
+    { file: 'gallery-4.jpg', label: 'KDP gathering · Bonn' },
+    { file: 'gallery-5.jpg', label: 'Building Kintsugi' },
   ],
 }
 

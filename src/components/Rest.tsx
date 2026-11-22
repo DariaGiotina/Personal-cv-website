@@ -133,12 +133,11 @@ export function Skills() {
 }
 
 const GAL = [
-  { x: '17%', y: 150, w: 240, h: 180, r: -3, s: -80 },
-  { x: '39%', y: 250, w: 300, h: 220, r: 2, s: 60 },
-  { x: '67%', y: 120, w: 220, h: 280, r: -2, s: -140 },
-  { x: '72%', y: 540, w: 260, h: 190, r: 3, s: 100 },
-  { x: '21%', y: 640, w: 220, h: 280, r: 2, s: -60 },
-  { x: '50%', y: 660, w: 240, h: 240, r: -2, s: 140 },
+  { x: '14%', y: 140, w: 340, h: 255, r: -3, s: -80 },
+  { x: '44%', y: 260, w: 380, h: 286, r: 2, s: 60 },
+  { x: '68%', y: 110, w: 320, h: 180, r: -2, s: -140 },
+  { x: '66%', y: 560, w: 320, h: 240, r: 3, s: 100 },
+  { x: '20%', y: 620, w: 360, h: 203, r: 2, s: -60 },
 ]
 
 export function Gallery() {
@@ -162,12 +161,12 @@ export function Gallery() {
       {gallery.photos.map((p, i) => {
         const g = GAL[i]
         const style = mobile
-          ? { left: i % 2 ? '44%' : '6%', top: 80 + i * 190, width: 180 }
+          ? { left: i % 2 ? '40%' : '6%', top: 80 + i * 230, width: 210 }
           : { left: g.x, top: g.y, width: g.w }
         return (
           <div className="gallery__item" key={p.file} data-speed={g.s} style={style}>
             <div style={{ rotate: `${g.r}deg` }}>
-              <Photo file={p.file} label="Photo" dark style={{ height: mobile ? 220 : g.h }} />
+              <Photo file={p.file} label="Photo" dark style={{ height: mobile ? 150 : g.h }} />
             </div>
             <small>{p.label}</small>
           </div>

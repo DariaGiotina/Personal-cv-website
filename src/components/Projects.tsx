@@ -66,7 +66,7 @@ export function Projects() {
                   <div data-reveal style={{ ['--d' as string]: '0.24s' }}>
                     {p.paras.map((x, k) => <p key={k}>{t(x)}</p>)}
                     {p.credit && (
-                      <div className="credit"><span className="av" />{t(ui.artBy)} {artist.name} · {t(artist.school)}</div>
+                      <div className="credit"><img className="av" src={`${import.meta.env.BASE_URL}images/${artist.photo}`} alt={artist.name} />{t(ui.artBy)} {artist.name} · {t(artist.school)}</div>
                     )}
                     <p className="meta">{t(ui.myPart)} · {t(p.part)}</p>
                     <p className="meta meta--stack">{t(ui.stack)} · {p.stack}</p>

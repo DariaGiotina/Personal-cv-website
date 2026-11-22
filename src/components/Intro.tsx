@@ -60,7 +60,7 @@ export function Work() {
       <SectionHead label={t(work.label)} title={t(work.title)} />
       <div className="card role" data-reveal>
         <div className="role__left">
-          <div className="role__logo">LOGO</div>
+          <div className="role__logo role__logo--wide"><img src={`${import.meta.env.BASE_URL}images/kautex-logo.png`} alt="Kautex, a Textron company" /></div>
           <div>
             <div className="role__cur"><span className="dot" />{t(work.current)}</div>
             <h3>{t(work.role)}</h3>

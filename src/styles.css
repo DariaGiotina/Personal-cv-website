@@ -432,6 +432,7 @@ button { font: inherit; color: inherit; cursor: pointer; }
   .exp__item { width: 300px; }
   .mind__row { gap: 20px; }
   .gallery { height: 1300px; }
+  .gallery__word { font-size: 130px; }
   .fan { zoom: 0.42; height: 420px; }
   .socials__links { gap: 20px; }
 }
@@ -461,3 +462,10 @@ button { font: inherit; color: inherit; cursor: pointer; }
   .sticker--accent > div { font-size: 16px; }
   .hero__signature text { font-size: 170px; }
 }
+
+.role__logo--wide { width: 180px; height: 96px; background: #fff; }
+.role__logo--wide img { padding: 16px 18px; }
+.credit img.av { object-fit: cover; }
+.hero__photo .photo img { object-position: 50% 28%; }
+.hl__photos .photo:last-child img { object-fit: contain; background: #e6d3d5; }
+@media (max-width: 720px) { .role__logo--wide { width: 150px; height: 70px; } }

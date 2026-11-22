@@ -29,7 +29,7 @@ export const ui = {
   myPart: { en: 'My part', ro: 'Partea mea' },
   pickTrack: { en: 'Pick what you’re hiring for.', ro: 'Alege ce cauți.' },
   alsoOnGithub: { en: 'Also on GitHub', ro: 'Tot pe GitHub' },
-  tryDemo: { en: 'Try the demo', ro: 'Încearcă demo-ul' },
+  appFlow: { en: 'The skin check flow', ro: 'Fluxul de verificare' },
   scroll: { en: 'scroll', ro: 'derulează' },
   artBy: { en: 'Art by', ro: 'Artă de' },
   footerRight: { en: 'Built with React, three.js and too much coffee', ro: 'Construit cu React, three.js și prea multă cafea' },

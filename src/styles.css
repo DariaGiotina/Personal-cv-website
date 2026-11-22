@@ -532,3 +532,9 @@ button.btn { cursor: pointer; }
 .v-boss__shadow { position: absolute; left: 71%; bottom: 2%; width: 42%; height: 7%; translate: -50% 0; border-radius: 50%;
   background: radial-gradient(closest-side, rgba(60, 35, 40, 0.22), rgba(60, 35, 40, 0)); }
 .v-boss .v-cap { margin-top: 6px; text-align: center; }
+
+/* phone with the real app screen recording */
+.phone--video { padding: 0; width: 262px; height: 556px; overflow: hidden; background: #fff8f6; }
+.phone--video .photo { width: 100%; height: 100%; background: #fff8f6; border-radius: 32px; overflow: hidden; }
+.phone--video video { width: 100%; height: 100%; object-fit: cover; display: block; }
+.v-phone { height: 660px; }

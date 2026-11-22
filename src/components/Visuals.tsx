@@ -5,33 +5,15 @@ import { ui } from '../content/site'
 import { useLang } from '../i18n'
 import { Photo } from './Photo'
 
-const DEMO = [
-  { label: 'Acne-related concern', conf: 0.78, abstain: false },
-  { label: 'Pigmentation', conf: 0.66, abstain: false },
-  { label: 'Not sure, please see a dermatologist', conf: 0.31, abstain: true },
-]
-
 function PhoneDemo() {
   const { t } = useLang()
-  const [i, setI] = useState(0)
-  const d = DEMO[i]
   return (
     <div className="v v-phone">
-      <div className="hand">{t(ui.tryDemo)}
+      <div className="hand">{t(ui.appFlow)}
         <svg width="20" height="40" viewBox="0 0 20 40" fill="none"><path d="M10 0 C 8 14 12 24 10 36 M3 29 L10 37 L17 29" stroke="#8A7F82" strokeWidth="1.6" strokeLinecap="round" /></svg>
       </div>
-      <div className="phone">
-        <h5>Skin check</h5>
-        <button className="shot" onClick={() => setI((i + 1) % DEMO.length)} aria-label="Run another sample">
-          <Photo file="thesis-app.png" label="Tap to run a sample" />
-        </button>
-        <div className="res">
-          <small>{d.abstain ? 'Model abstained' : 'Most likely'}</small>
-          <b>{d.label}</b>
-          <div className="bar"><i style={{ width: `${d.conf * 100}%`, background: d.abstain ? '#d4bfc3' : undefined }} /></div>
-          <small style={{ marginTop: 6 }}>Calibrated confidence {d.conf.toFixed(2)}</small>
-        </div>
-        <div className="abstain">Below the confidence threshold it says so and abstains.</div>
+      <div className="phone phone--video">
+        <LoopVideo name="thesis-app" poster="thesis-app.jpg" label="Lumière app: photo capture, analysis and result screens" />
       </div>
     </div>
   )
